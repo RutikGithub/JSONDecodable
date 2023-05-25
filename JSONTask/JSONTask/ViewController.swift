@@ -64,10 +64,18 @@ extension ViewController:UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellData = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        cellData.toppingLabel.text = topping![indexPath.row].type
-        cellData.battersLabel.text = batters[indexPath.row].type
+        cellData.toppingIdLabel.text = "ID:\(topping![indexPath.row].id)"
+        cellData.toppingLabel.text = "Type:\(topping![indexPath.row].type)"
+        cellData.battersIdLabel.text = "ID:\(batters[indexPath.row].id)"
+        cellData.battersLabel.text = "Type:\(batters[indexPath.row].type)"
         return cellData
     }
     
     
+}
+extension ViewController:UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
 }

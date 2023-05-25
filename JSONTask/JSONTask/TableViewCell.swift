@@ -10,7 +10,10 @@ import UIKit
 class TableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var battersIdLabel: UILabel!
     @IBOutlet weak var battersLabel: UILabel!
+    @IBOutlet weak var toppingIdLabel: UILabel!
+    
     @IBOutlet weak var toppingLabel: UILabel!
     
     override func awakeFromNib() {
