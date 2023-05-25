@@ -18,18 +18,27 @@ class ViewController: UIViewController {
     }
 func userData()
     {
-       UserDefaults.standard.set(nameTextField.self, forKey: "UserData")
+        UserDefaults.standard.set(nameTextField.text, forKey: "UserData")
         
     }
-    func getData()
-    {
-        nameLabel.text = UserDefaults.standard.string(forKey: "UserData")
-    }
+    
 
     @IBAction func button(_ sender: Any) {
-        
+        userData()
         var alert = UIAlertController(title: "Alert", message: "Are You Sure?", preferredStyle: .alert)
-        var action = UIAlertAction(title: "Yes", style: .default)
+        var action = UIAlertAction(title: "Yes", style: .default) { (action) in
+            let val = UserDefaults.standard.string(forKey: "UserData")
+            if let val{
+                self.nameLabel.text = val
+            }
+            else
+            {
+                print("No Value")
+            }
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true)
         
     }
 }
